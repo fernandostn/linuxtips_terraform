@@ -1,5 +1,5 @@
 module "servers" {
-  source = "./servers"
+  source  = "./servers"
   servers = 2 #input que precisa ser definido no módulo filho
   /*providers = {
     aws = "aws.w2"

@@ -1,5 +1,5 @@
 output "nome_dns_web-east" {
-  value = "${aws_instance.web-east[*].public_dns}"
+  value = aws_instance.web-east[*].public_dns
 }
 
 /*

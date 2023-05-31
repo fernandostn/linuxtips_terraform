@@ -1,11 +1,11 @@
 data "aws_ami" "ubuntu" {
-    most_recent = true
+  most_recent = true
 
-    filter {
-      name = "name"
-      values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-    }
-    owners = ["099720109477"] #canonical/ubuntu
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+  owners = ["099720109477"] #canonical/ubuntu
 }
 
 
@@ -13,7 +13,7 @@ resource "aws_instance" "web-east" {
   count = var.servers
   #ami = "ami-0885b1f6bd170450c"
   #ami = data.aws_ami.ubuntu.id
-  ami = var.image_id #estou pegando a ami através de variável somente para us-east-1
+  ami           = var.image_id #estou pegando a ami através de variável somente para us-east-1
   instance_type = "t2.micro"
 
   tags = {
