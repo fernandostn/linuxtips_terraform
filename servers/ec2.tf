@@ -21,10 +21,17 @@ resource "aws_instance" "web-east" {
   }
 }
 
-
 /*
+
+resource "aws_eip" "ip" {
+  vpc      = true
+  instance = aws_instance.web-east.id
+  # instance = aws_instance.web-east.id
+}
+
+
 data "aws_ami" "ubuntu-west2" {
-    provider = aws.west-2
+    #provider = aws.west-2
     most_recent = true
 
     filter {
@@ -35,8 +42,8 @@ data "aws_ami" "ubuntu-west2" {
 }
 
 
-resource "aws_instance" "web-west-2" {
-  provider = aws.west-2  
+resource "aws_instance" "web2" {
+  #provider = aws.west-2  
   #ami           = "ami-0885b1f6bd170450c"
   ami = data.aws_ami.ubuntu-west2.id
   instance_type = "t2.micro"
@@ -44,6 +51,8 @@ resource "aws_instance" "web-west-2" {
   tags = {
     Name = "HelloWorld"
   }
+  depends_on = [ aws_instance.web-east ]
+
 }
 
 */
