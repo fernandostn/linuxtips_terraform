@@ -10,14 +10,18 @@ data "aws_ami" "ubuntu" {
 
 
 resource "aws_instance" "web-east" {
-  count = var.servers
+  #count = var.servers
   #ami = "ami-0885b1f6bd170450c"
   #ami = data.aws_ami.ubuntu.id
+  #count = var.env == "production" ? 2 + var.plus : 1
+  #count = var.production ? 2 : 1
   ami           = var.image_id #estou pegando a ami através de variável somente para us-east-1
   instance_type = "t2.micro"
+  #instance_type = count.index < 1 ? "t2.micro" : "t3.medium" # a primeira instância será t2.micro, as demais serão t3.medium
 
   tags = {
     Name = "HelloWorld"
+    Env  = var.env
   }
 }
 

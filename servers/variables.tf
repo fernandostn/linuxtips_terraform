@@ -10,3 +10,18 @@ variable "image_id" {
 
 variable "servers" {
 }
+
+variable "env" {
+  type = string
+  default = "staging"
+  description = "O Ambinente da instância"
+}
+ 
+
+variable "plus" {
+  default = 2
+}
+
+variable "production" {
+  default = true
+}
