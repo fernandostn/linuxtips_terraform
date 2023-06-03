@@ -11,7 +11,7 @@ variable "image_id" {
 variable "servers" {
 }
 
-variable "env" {
+variable "environment" {
   type = string
   default = "staging"
   description = "O Ambinente da instância"
@@ -24,4 +24,36 @@ variable "plus" {
 
 variable "production" {
   default = true
+}
+
+variable "sg" {
+  type = list(number)
+  default = [1,2,3,4]
+  description = "Lista de SG para esta instância"
+
+}
+
+variable "instance_type" {
+  type = list(string)
+  default = ["t2.micro","t3.medium"]
+  description = "List of instance type"
+  
+}
+
+/*
+variable "blocks" {
+  type = list(object({
+    device_name = string
+    volume_size = string
+    volume_type = string
+  }))
+  description = "Lista do bloco dinâmico EBS"
+}
+*/
+
+variable "name" {
+  type = string
+  default = "Tomás"
+  description = "nome do Helo World"
+  
 }
